@@ -11,9 +11,8 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6 offset-md-3">
-              <card></card>
-              <card></card>
-              <card></card>
+              <card v-for="article in articles" @delete-article="removeArticle" :title="article.title" :content="article.content"></card>
+            
             </div>
         </div>
     </div>
