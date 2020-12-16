@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    Terkait dengan metode menampilkan list, Vue menyarankan agar sebisa mungkin menggunakan atribut key
+pada tag HTML yang ikut dalam perulangan v-for.
+    <div id="app">
+        <ul>
+            <li v-for="book in books">
+                {{ book }}
+            </li>
+        </ul>
+
+        <!-- v-for menggunakan tag template -->
+        <h1>v-for menggunakan template : </h1><br>
+        <template v-for="book in books">
+            <li>{{ book }}</li>
+        </template>
+
+        <br>
+        <!-- v-for menggunakan index -->
+        <h1>v-for menggunakan index : </h1>
+        <ul v-for="(book, index) in books">
+            <li>{{ index+1}}. {{book}}</li>
+        </ul>
+
+        <!-- note : Selain in, kita bisa juga 
+        menggunakan delimiter of pada directive v-for. -->
+
+        <h1>v-for menampilkan object : </h1>
+        <li v-for="value of book">
+            {{ value }}
+        </li>
+
+        <h3>menampilkan object key dan value</h3>
+        <li v-for="(value, key) of book">
+            {{key}} : {{ value}}
+        </li>
+
+        <h3>Menampilkan JSON Komplek</h3>
+        <table border="1">
+            <tr v-for="book of booksJSON">
+                <td><img :src="book.image" alt=""></td>
+                <td>id : {{book.id}}</td>
+                <td>title : {{book.title}}</td>
+                <td>price : {{book.price}}</td>
+            </tr>
+        </table>
+        
+
+        <h3>Menampilkan JSON Komplek directive v-for</h3>
+        <table>
+            <td>
+                <template v-for=" (key, value) of booksJSON ">
+                    {{ key }} : {{ value }} <br>
+                </template>
+            </td>
+        </table>
+
+        <!-- Nilai atribut key sebenarnya bisa kita dapat darimana saja asal unik, misal:
+        index dari array
+        key atau properti dari objek
+        Berikut ini contohnya:
+        -index dari array
+        -key atau property dari objek -->
+
+        <h3>Contoh penggunan attribut key berasal dari argumen index. :</h3>
+        <li v-for="(book, index) of booksJSON" v-bind:key="index">
+            {{ index + 1 }}.{{ book.title}} 
+        </li>
+
+        <h3>Membatasi v-for dengan v-if</h3>
+        <li v-for="(book, index) of booksJSON" v-bind:key="index" v-if="book.price > 90000">
+            {{ book.title}}. {{ book.price}}
+        </li>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                books: [
+                    'C++ High Performance',
+                    'Mastering Linux Security and Hardening',
+                    'Python Programming Blueprints',
+                    'Mastering PostgreSQL 10'
+                ],
+                book: {
+                    id: 99,
+                    title: 'C++ High Performance',
+                    description: 'Write code that scales across CPU registers, multi-core',
+                    authors: 'Viktor Sehr, Björn Andrist',
+                    publish_year: 2018,
+                    price: 100000,
+                },
+                booksJSON: [
+                    {
+                        id: 99,
+                        title: 'C++ High Performance',
+                        description: 'Write code that scales across CPU registers, multi',
+                        authors: 'Viktor Sehr, Björn Andrist',
+                        publish_year: 2018,
+                        price: 100000,
+                        image: 'https://picsum.photos/id/239/200/300'
+                    },
+                    {
+                        id: 100,
+                        title: 'Mastering Linux Security and Hardening',
+                        description: 'A comprehensive guide to mastering the art of',
+                        authors: 'Donald A. Tevault',
+                        publish_year: 2018,
+                        price: 125000,
+                        image: 'https://picsum.photos/id/240/200/300'
+                    },
+                    {
+                        id: 101,
+                        title: 'Mastering PostgreSQL 10',
+                        description: 'Master the capabilities of PostgreSQL 10 to',
+                        authors: 'Hans-Jürgen Schönig',
+                        publish_year: 2016,
+                        price: 90000,
+                        image: 'https://picsum.photos/id/241/200/300'
+                    },
+                    {
+                        id: 102,
+                        title: 'Python Programming Blueprints',
+                        description: 'How to build useful, real-world applications in the',
+                        authors: 'Daniel Furtado, Marcus Pennington',
+                        publish_year: 2017,
+                        price: 75000,
+                        image: 'https://picsum.photos/id/242/200/300'
+                    }
+                ]
+            }
+        })
+    </script>
+</body>
+
+</html>

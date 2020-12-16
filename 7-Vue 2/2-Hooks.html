@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        {{ message }}
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                message: 'hello world'
+            },
+            beforeCreate() {
+                console.log('before create '+ this.message);
+            },
+            created(){
+                console.log('created '+ this.message);
+                console.log(this.$data);
+
+            },
+            //beforeMount yaitu hook ketika template dicompile.
+            beforeMount(){
+                console.log('before mounted : '+ 'el = '+ this.$el.textContent)
+            },
+            //munted yaitu hook ketika elemen (properti el) telah diinisialisasi,
+            // data telah dimuat dan view telahdirender
+            mounted() {
+                console.log('mounted : '+ 'el = '+ this.$el.textContent)
+            },
+            //Terjadi jika ada perubahan data yang mengakibatkan render ulang
+            //Tepatnya hook terjadi seblum di render ulang
+            beforeUpdate() {
+                console.log('Before update :'+ 'el = '+ this.$el.textContent)
+            },
+            //update yaitu hook yang terjadi setelah beforeUpdate di render ulang
+            //yaitu setelah view dirender ulang
+            updated(){
+                console.log('Updated :'+ 'el=' + this.$el.textContent)
+            },
+            //beforeDestroy terjadi jika hook sebelum komponen di hapus
+            beforeDestroy(){
+                console.log('Before Destroy' )
+            },
+            //hook terjadi setelah di hapus
+            destroyed(){
+                console.log('Destroy');
+            }
+        })
+    </script>
+</body>
+</html>

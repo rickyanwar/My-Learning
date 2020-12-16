@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Directive</title>
+
+    <!-- 
+     note : directive merupakan atribut khusus yang disematkan pada element
+            atau html, sebagai penanda bahwa element tersbut akan diberikan 
+            perlakuan khusus oleh vue
+     -->
+</head>
+<body>
+    <div id="app">
+        <!-- v-html = merupakan directive untuk menampilkan data HTML-->
+        v-html : <p v-html="message"></p>
+
+        <!-- v-once = merupakan directive yang berarti nilai tidak berubah/Konstan -->
+        v-once :<h1 v-once> {{ message }}</h1>
+
+        <!-- v-text = directive untuk menampilkan text biasa -->
+        v-text : <h1 v-text="message"></h1>
+        <!-- sama dengan  -->
+        v-text : <h1>{{ message }}</h1>
+
+        <!-- v-show = merupakan directive untuk menampilkan atau menyembunyikan DOM
+        catatan = v-show tidak mendukung element template
+        -->
+        v-show : <h1 v-show="displayMessage">{{ message }}</h1>
+    
+        <!-- 
+        v-if = merupakan directive untuk merender atau tidak
+        dengan kondisi tertentu hampir sama dengan v-show -->
+        v-if :
+        <div v-if="nilai === 'A'">Sempurna</div>
+        <div v-else-if="nilai === 'B'">Bagus</div>
+        <div v-else="nilai === 'C'">Cukup</div>
+        
+        <!-- v-on = merupakan directive event listener bertugas memantau aktivitas
+        aksi yang dilakukan suatu element -->
+        v-on :
+        <button onclick="window.alert('hallo')">Informasi</button> <br>
+        <br>
+        
+        <!-- v-bind =  berfungsi untuk mebinding attribut html atau komponen agar
+        datanya selalu terupdate secara reactive sesuai dengan datanya,
+        kebalikan dari v-on -->
+
+        v-bind :
+        <img v-bind:src="imgSrc" alt="">
+
+
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                message: 'hello world',
+                displayMessage: true,
+                nilai : 'C',
+                imgSrc : 'https://picsum.photos/id/237/200/300'
+            }
+        })
+
+        setTimeout(()=>{
+            vm.imgSrc = 'https://picsum.photos/id/238/200/300'
+        }, 2000)
+    </script>
+</body>
+</html>

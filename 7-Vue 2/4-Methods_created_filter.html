@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        //Penggunaan method
+        <h1>{{ counter }}</h1>
+        <button onclick="vm.increment()"> + </button>
+        
+        //Penggunaan computed
+        <h3>{{fullName}}</h3>
+
+        //Penggunan filters
+        <h3>{{firstName | upper}}</h3>
+
+        <h3>{{ money | formatCurrency('IDR') }}</h3>
+        <h3>{{ money | formatCurrency('USD') }}</h3>
+
+           //Chainging Filter
+            <h1> upper: {{ message | upper }} </h1>
+            <h1> reverse: {{ message | reverse }} </h1>
+            <h1> upper & reverse: {{ message | upper | reverse }} </h1>
+
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                counter : 0,
+                message : 'Hello',
+                firstName: 'ricky',
+                lastName : 'anwar',
+                money : 23,
+            },
+            //digunakan jika ada action atau event yang memangil satu fungsi
+            //maka fungsi tersebut cocok di kategorikan sebagi methods
+            methods :{
+                increment(){
+                    this.counter++
+                }
+            },
+            //Computed berisi fungsi-fungsi nilai yang selalu dievaluasi
+            //jika terjadi perubahan data yang menjadi defedencynya
+            //dan umumnya mengembalikan nilai return
+
+            //Note : Meskipun bentuknya fungsi namun fungsi pada computed tidak 
+            //memiliki parameter dan oleh Vue tidak dianggap sebagai fungs
+            computed : {
+                fullName : function (){
+                    return this.firstName + ' ' + this.lastName
+                }
+            },
+            //Filter digunakan untuk memanipulasi tampilan atau format 
+            //text pada template
+            filters: {
+                upper(text) {
+                    return text.toUpperCase();
+                },
+
+                reverse (text){
+                    return text.split('').reverse().join('');
+                },
+
+                //Filter dengan menggunakan parameter
+
+                formatCurrency (value, currency){
+                    var formatter = new Intl.NumberFormat('id-ID',{
+                        style : 'currency',
+                        currency : currency,
+                        minimumFractionDigits: 2,
+                    });
+
+                    return formatter.format(value)
+                }
+            }
+        })
+    </script>
+</body>
+</html>

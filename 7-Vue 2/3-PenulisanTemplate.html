@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .title{
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <!-- data text -->
+        <h1>  {{ message }}</h1> 
+        <!-- mencegah perubah data menggunakan v-once 
+            atau merubahmnya menjadi konstanta-->
+        <h1 v-once>v-one : {{ message }}</h1>
+         <!-- data raw html -->
+         <h2 v-html="html"></h2>
+         <!-- data attribut 
+         dikarenakan mustache tidak dapat digunakan di attribut tag
+         maka digunakan v-bind -->
+         <h1 v-bind:class="class_h1">{{message}}</h1>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                message: 'hello world',
+                html: `<span style="color:red">ini tag span</span>`,
+                class_h1 : 'title'
+            },
+            //JIKA INGIN MEMBUAT TEMPLATE
+
+            // render (createElement){
+            //     return createElement('h1', this.message)
+            // }
+        })
+    </script>
+</body>
+</html>
