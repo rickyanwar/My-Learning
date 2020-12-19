@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h4>
+        <li> v-on (@) = artinya listen aksi yang dilakukan</li>
+        <li> v-bind (:) = mengawasi perubahan data yang diawasi</li>
+    </h4>
+
+    <div id="app">
+        <h1>Form Biasa : </h1>
+        <form>
+            <input type="text" name="title" :value="title" @input="title = $event.target.value">
+            {{ title }}
+        </form>
+
+        <h1>Form dengan Data Binding (v-model)</h1>
+        <p>untuk mengatasi kerumitan pada form pertama diatas maka diperkanalkan
+            two ways data binding
+        </p>
+        <form action="">
+            <input type="text" name="title" v-model="title" placeholder="masukkan judul">
+            {{title}}
+            <br>
+            <textarea name="description" v-model="description" placeholder="masukkan deskripsi"></textarea>
+            {{ description}}
+        </form>
+        <br>
+        
+        <h3>v-model juga menerima modifier data bersifat numeric</h3>
+        <li>Modifier number : digunakan untuk memastikan inputan user berupa nomor</li>
+        <li>Modifier trim   : digunakan untuk menghapus spasi puti atau akhir dari string</li>
+
+        <form action="">
+            <input type="number" name="number" v-model.number="number" placeholder="masukkan judul">
+            {{number}}
+            <br>
+            <textarea name="description" v-model="description" placeholder="masukkan deskripsi"></textarea>
+            {{ description }}
+        </form>
+        <br>
+        <h3>Text</h3>
+        <input type="radio" name="bukuA" value="A" v-model="paket">
+        <input type="radio" name="bukuB" value="B" v-model="paket">
+        <input type="radio" name="bukuAB" value="AB" v-model="paket">
+        <span>Pilihan paket : {{ paket }}</span>
+        <br><br><br>
+        <select name="category" v-model="category">
+            <option disabled value="">Please select one</option>
+            <option value="01">Grafic Programing</option>
+            <option value="02">Mobile Application Programming</option>
+            <option value="03">Virtual and augmented reality</option>
+        </select>
+        <span>selected : {{ category }}</span>
+
+        <br><br><br>
+        <h3>Boolean</h3>
+        <input type="checkbox" name="checkbox" v-model="gender">
+        <label for="checkbox">{{ gender }}</label>
+
+        <h3>Boolean dengan 2 atau option</h3>
+        <select name="gender" v-model="gender">
+            <option value="false">Wanita</option>
+            <option value="true">Pria</option>
+        </select>
+        <br><br><br>
+
+        <h3>Array</h3>
+        bertipe array kemungkinan pilihan lebih dari satu <br>
+        <input type="checkbox" name="hobby1" value="nonton" v-model="hobbies">
+        <label for="hobby1">Nonton</label>
+        <input type="checkbox" name="hobby2" value="jalan" v-model="hobbies">
+        <label for="hobby2">Jalan</label>
+        <input type="checkbox" name="hobby3" value="makan" v-model="hobbies">
+        <label for="hobby3">Makan</label>
+        <br>
+        <span>Pilihan hobi: {{ hobbies }}</span>
+        <br><br>
+        <select v-model="categories" multiple>
+            <option value="01">Graphics Programming</option>
+            <option value="02">Mobile Application Development</option>
+            <option value="03">Virtual and Augmented Reality</option>
+            </select>
+        <span>Selected: {{ categories }}</span>
+
+        <br><br>
+        <h3>Generate option menggunakan v-for   :</h3>
+        <select name="categories" >
+            <option v-for="value in option" :value="option.value">
+                {{ value.text }}
+            </option>
+        </select>
+
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                title: 'hello world',
+                description : 'aaaa',
+                number : 0,
+                category: '',
+                paket : '',
+                gender : true,
+                hobbies: [],
+                categories : [],
+                option : [{text :'option 1'},
+                          {text :'option 2'},
+                          {text :'option 3'}]
+
+            }
+        })
+    </script>
+</body>
+</html>

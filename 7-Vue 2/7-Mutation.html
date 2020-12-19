@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <h1>JSON</h1>
+        <li v-for="(book, index) of booksJSON">
+            {{ book.title}}
+        </li>
+        <h1>OBJECT</h1>
+        <template v-for=" (key, value) of book ">
+            {{ key }} : {{ value }} <br>
+        </template>
+
+        <h3>push() & pop()</h3>
+        Fungsi push digunakan untuk menambahkan
+        data elemen baru pada suatu array pada posisi index terakhir.
+        Sebaliknya fungsi pop untuk menghapus elemen terakhir dari 
+        suatu array. Misalnya: <br>
+        vm.booksJSON.push({title: "buku baru"})
+        <br>
+
+        <h3>unshift() & shift()</h3>
+        fungsi unshift digunakan untuk menambahkan data element baru suatu
+        array pada index posisi pertama(0). sebaliknya fungsi shift untuk
+        menghapus element pertama dari array contoh : <br>
+        vm.booksJSON.shift() <br>
+
+        <h3>sort() & reverse()</h3>
+        fungsi sort digunakan untuk mengurutkan data element pada array
+        secara ascending, sedangkan reverse melakukan sebaliknya : <br>
+        vm.booksJSON.sort() <br>
+
+        <h3>splice()</h3>
+        digunakan untuk menambahkan data element baru pada suatu array
+        <ul>
+            <li>parameter pertama merupakan posisi index dari 
+                data yang ditambahkan
+            </li>
+            <li>
+                parameter kedua jumlah element pada array yang akan di hapus
+            </li>
+        </ul>
+        contoh : <br>
+        vm.booksJSON.splice(3,0,'buku baru') <br>
+
+        contoh menghapus element dari suatu array : <br>
+        vm.booksJSON.splice(2,1)
+        Perintah tersebut akan menghapus elemen array 
+        pada index ke-dua sebanyak satu elemen <br>
+
+        <h3>Fungsi set pada vue</h3>
+        vue juga menyediakan fungsi built in untuk mengatasi kesalahan
+        pada javascript ini, ika pada contohnya pada suatu element array
+        dengan fungsi splice maka sebenarnya dapat dilakukan dengan fungsi vue : <br>
+
+        Vue.Set(data_array, index_yang_akan_diganti, nilai_baru) <br>
+        vm.$set(vm.booksJSON,1,{title: "Mastering hacking"}) <br>
+
+        note: jika properti yang ingin ditambahkan lebih dari satu dapat menggunakan cara berikut
+        vm.book = Object.assign({}, vm.book,{ title : 'ganti judul'})
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                message: 'hello world',
+                book : {
+                    id: 99,
+                    title: 'C++ High Performance',
+                    description: 'Write code that scales across CPU registers, multi-coreand machine clusters',
+                    authors: 'Viktor Sehr, Björn Andrist',
+                    publish_year: 2018,
+                    price: 100000,
+                },
+                booksJSON: [
+                    {
+                        id: 99,
+                        title: 'C++ High Performance',
+                        description: 'Write code that scales across CPU registers, multi',
+                        authors: 'Viktor Sehr, Björn Andrist',
+                        publish_year: 2018,
+                        price: 100000,
+                        image: 'https://picsum.photos/id/239/200/300'
+                    },
+                    {
+                        id: 100,
+                        title: 'Mastering Linux Security and Hardening',
+                        description: 'A comprehensive guide to mastering the art of',
+                        authors: 'Donald A. Tevault',
+                        publish_year: 2018,
+                        price: 125000,
+                        image: 'https://picsum.photos/id/240/200/300'
+                    },
+                    {
+                        id: 101,
+                        title: 'Mastering PostgreSQL 10',
+                        description: 'Master the capabilities of PostgreSQL 10 to',
+                        authors: 'Hans-Jürgen Schönig',
+                        publish_year: 2016,
+                        price: 90000,
+                        image: 'https://picsum.photos/id/241/200/300'
+                    },
+                    {
+                        id: 102,
+                        title: 'Python Programming Blueprints',
+                        description: 'How to build useful, real-world applications in the',
+                        authors: 'Daniel Furtado, Marcus Pennington',
+                        publish_year: 2017,
+                        price: 75000,
+                        image: 'https://picsum.photos/id/242/200/300'
+                    }
+                ]
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        form {
+            border: 1px solid #ddd;
+            padding: 5px;
+            width: 225px;
+            background: #efefef;
+        }
+
+        label {
+            display: block;
+            margin-top: 5px;
+        }
+
+        input,
+        textarea,
+        select,
+        option {
+            min-width: 200px;
+        }
+
+        input:focus,
+        a:active {
+            color: green;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <form action="" @submit="submitForm($event)">
+            <label>Title:</label>
+            <input type="text" v-model="title" ref="title" />
+            <label>Description:</label>
+            <textarea v-model="description"></textarea>
+            <label>Authors:</label>
+            <input type="text" v-model="authors">
+            <label>Price:</label>
+            <input type="number" v-model.number="price">
+            <label>Categories:</label>
+            <select v-model="categories" multiple>
+                <option v-for="option in options" :value="option.value">
+                    {{ option.text }}
+                </option>
+            </select>
+            <label></label>
+            <input type="submit" value="Submit">
+        </form>
+
+        <h3>Kita juga bisa menambahkan setFocus pada input yang belum
+            memenuhi syarat, sehingga memudahkan dari sisi user, dengan
+            cara menambahkan ref pada sisi user
+        </h3><br>
+
+        <h3>Form tanpa Action</h3>
+        <form ref="fromBook" @submit.prevent="submitForm($event)" method="POST" action="http://example.com/add-product">
+            <p v-if="errors.length">
+                <b>Please correct the following error(s)</b>
+                <li v-for="eror in errors">{{eror}}</li>
+            </p>
+            <label>Title:</label>
+            <input name="title" ref="title" type="text" v-model="title">
+            <label>Description:</label>
+            <textarea name="description" ref="description" v-model="description">
+            </textarea>
+            <label>Authors:</label>
+            <input name="authors" ref="authors" type="text" v-model="authors">
+            <label>Price:</label>
+            <input name="price" ref="price" type="number" v-model.number="price">
+            <label>Categories:</label>
+            <select name="categories" ref="categories" v-model="categories" multiple>
+                <option v-for="option in options" :value="option.value">
+                    {{ option.text }}
+                </option>
+            </select>
+            <label></label>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                errors: [],
+                title: '',
+                description: '',
+                authors: '',
+                price: 0,
+                categories: [],
+                options: [{
+                        text: 'Graphics Programming',
+                        value: '01'
+                    },
+                    {
+                        text: 'Mobile Application Development',
+                        value: '02'
+                    },
+                    {
+                        text: 'Virtual and Augmented Reality',
+                        value: '03'
+                    }
+                ]
+            },
+            methods: {
+                // submitForm(event) {
+                //     let error = 0;
+                //     if (this.title.length < 3) {
+                //         error++
+                //         //Menambahkan focus
+                //         this.$refs.title.focus()
+                //         alert('Title minimal 3 karakter')
+                //     } else if (this.description.length < 20) {
+                //         error++
+                //         alert('Deskripsi minimal 20 karakter ')
+                //     } else if (this.authors.length < 4) {
+                //         error++
+                //         alert('authors minimal 4 karakter')
+                //     } else if (this.categories.length === 0) {
+                //         error++
+                //         alert('Pilih minimal 1 category')
+                //     }
+                //     console.log(event)
+                //     alert('Terima Kasih');
+                //     event.preventDefault();
+                // }
+
+
+                //Submit Form 2 
+                submitForm(event) {
+                    this.errors = [];
+                    if (this.title.length < 3) {
+                        this.errors.push('Title minimal 3 karakter!')
+                        this.$refs.title.select()
+                    }
+                    if (this.description.length > 500) {
+                        this.errors.push('Description maximal 500 karakter!')
+                        this.$refs.description.select()
+                    }
+                    if (this.authors.length < 3) {
+                        this.errors.push('Authors minimal 3 karakter!')
+                        this.$refs.authors.select()
+                    }
+                    if (this.price < 0) {
+                        this.errors.push('Price tidak boleh minus!')
+                        this.$refs.price.select()
+                    }
+                    if (this.categories.length === 0) {
+                        this.errors.push('Pilih minimal 1 category!')
+                        this.$refs.categories.focus()
+                    }
+                    if (this.errors.length === 0) {
+                        alert('Terima kasih telah mengisi data dengan benar!')
+                        // kirim data ke server
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p>
+        Plugins biasanya digunakan sebagai wrapper untuk menambahkan atau mendaftarkan suatu fitur global pada
+        Vue, misalnya plugin untuk menambahkan:
+        global methods atau properties. contoh: vue-custom-element
+        global assets: directives/filters/transitions. contoh: vue-touch
+        component options menggunakan global mixin. contoh: vue-router
+        methods untuk objek Vue melalu Vue.prototype.
+    </p>
+    <div id="app">
+        {{ message }}
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                message: 'hello world'
+            }
+        })
+
+        //DEKLARASI PLUGINS
+        MyPlugin.install = function (Vue, options) {
+            // 1.Add Global or Property
+            Vue.MyPluginMethod = function () {
+                //Someting Logic
+            }
+
+            // 2.Add Global Asset
+            Vue.directive('my-directive', {
+                bind(el, binding, vnode, oldVnode) {
+                    //someting logic
+                }
+            })
+
+            // 3.Inject some-component option
+            Vue.mixins({
+                created: function () {}
+            })
+
+            // 4. Add instance method
+            Vue.prototype.$myMethod = function (methodOption) {
+                //Someting Logic
+            }
+        }
+
+        //CARA MENGGUNAKAN PLUGINS
+        // calls `MyPlugin.install(Vue)`
+        Vue.use(MyPlugin)
+        // atau jika ada options
+        Vue.use(MyPlugin, {
+            someOption: true
+        })
+    </script>
+</body>
+
+</html>

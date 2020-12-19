@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p>Note : Dibandingkan dengan props, penggunaan slot lebih fleksible yang memungkinkan pengguna component
+        mengirimkan konten berupa HTML ataupun template ke dalam component, sehingga tampilan component
+        akan sangat mudah dikustomisasi.</p> <br>
+    <div id="app">
+        <information>
+            <p>Hati-hati lantai licin!</p>
+        </information>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+    <script>
+        Vue.component('information', {
+            template: `
+                    <div class="card">
+                    <strong>Informasi</strong>
+                    <hr>
+                    <slot></slot>
+                    </div>`
+        })
+
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                message: 'hello world'
+            }
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .card {
+            background: #efefef;
+            border: 1px solid #ddd;
+            margin-right: 5px;
+            padding: 5px;
+            width: 200px;
+            float: left;
+        }
+
+        h3 {
+            min-height: 45px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <book title="C++" description="learning c++" image="https://picsum.photos/200/300">
+
+        </book>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+    <script>
+        var BookComponent = {
+            data() {
+                return {
+                    classCard: 'card'
+                }
+            },
+            props: ['title', 'description', 'image'],
+            template: `<div :class="classCard">
+                <h3>{{ title }}</h3>
+                <img :src="image" style="width:100%">
+                <p v-html="description"></p>
+                </div>`
+        }
+        var vm = new Vue({
+            el: '#app',
+            components: {
+                'book': BookComponent
+            }
+        })
+    </script>
+</body>
+
+</html>

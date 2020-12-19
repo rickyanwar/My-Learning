@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p>Mixin mendifiniskan kumpulan suatu fungsi atau option
+        pada komponen atau aplikasi tertentu, ketika objek vue menggunakan mixin
+        maka semua option dari mixin tersebut maka komponen tersebut
+        akan di gabungkan ke dalam komponen yang menggunakan
+    </p>
+    <br>
+    <p>Catatan: sebagaimana component, deklarasi mixin juga dapat diletakkan pada file berbeda dengan
+        objek utamanya. Disamping itu, dengan cara yang sama dengan di atas, mixin juga dapat digunakan
+        dalam component.</p> <br>
+
+    <p>Catatan: hati-hati menggunakan global mixins, sebab akan mempengaruhi setiap object atau
+        component pada Vue.</p><br>
+    <div id="app">
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+    <script>
+        var MixinHello = {
+            created: function () {
+                this.hello()
+            },
+            methods: {
+                hello: function () {
+                    console.log('Hello from mixin')
+                }
+            },
+        }
+
+        //DEKLRASI MIXIN GLOBAL
+        Vue.mixin({
+            created: function () {
+                let text = this.$options.text
+                if (text) {
+                    console.log(text)
+                }
+            }
+        })
+
+
+        var vm = new Vue({
+            el: '#app',
+            //GLOBAL MIXIN
+            text: 'hello',
+            //GLOBAL MIXIN END
+            mixins: [MixinHello],
+            data: {
+
+            }
+        })
+    </script>
+</body>
+
+</html>
