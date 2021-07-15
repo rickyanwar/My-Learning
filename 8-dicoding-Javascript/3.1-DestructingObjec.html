@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //  DESTRUCTING OBJECT 
+        const profile = {
+            firstName: 'Jhon',
+            lastName: 'Doe',
+            age: 23
+        }
+
+        //  DESTRUCTING OBJECT MENGGUNAKAN TEMPLATE
+        //  LITERAL
+        const {
+            firstName,
+            lastName,
+            age
+        } = profile
+        console.log(firstName, lastName, age);
+        // DALAM DESTRUCTING KITA BISA MENENTUKAN SALAH SATU
+        // NILAI YANG INGIN KITA DESTRUKSIKAN. SEHINGGA 
+        //KITA TIDAK PERLU MEMBUAT VARIABEL SEBNYAK PROPERTI YANG
+        //DIMILKI OBJEKNYA
+
+        //DESTRUCTING ASSIGMENT
+        //melakukan destructuring object pada deklarasi variabel.
+        // Namun, pada kasus tertentu mungkin kita perlu melakukannya 
+        //pada variabel yang sudah dideklarasikan.
+
+        const profile2 = {
+            firstName: "John",
+            lastName: "Doe",
+            age: 18
+        }
+
+        let firstName2 = "Dimas";
+        let age2 = 20;
+
+        // menginisialisasi nilai baru melalui object destruction
+        ({ firstName2,  age2} = profile2);
+
+        //jika tanpa tanda kurung
+        // tidak bisa karena JavaScript mengira kita membuat block statement
+        // block statement tidak bisa berada pada sisi kiri assignment
+        /* output:
+            John
+            18
+        */
+
+        //  SAAT MELAKUKAN DESTRUCTING ASSIGMENT, KITA PERLU MENULISKAN
+        //  DESTRUCTING OBJECT DIDALAM TANDA KURUNG, JIKA TIDAK MENULISKAN
+        // TANDA KURUNG, TANDA KURUNG KURAWAL AKAN MEMBUAT JAVASCRIPT, MENGIRA
+        // KITA MEMBUAT BLOCK STATEMENT
+
+        console.log(firstName2);
+        console.log(age2);
+    
+        // DEFAULT VALUES
+        // KETIKA MENDESTRUKSIKAN OBJEK DAN MENETAPKAN VARIABEL DENGAN
+        // NAMA YANG BUKAN PROPERTI DARI OBJEK, MAKA NILAI VARIABEL TERSEBUT
+        // MENJADI undefined
+
+        const profile3 = {
+            firstName3: "John",
+            lastName3: "Doe",
+            age3: 18
+        }
+        
+        
+        const {firstName3, age3, isMale3} = profile3;
+        console.log(firstName3)
+        console.log(age3)
+        console.log(isMale3)
+
+        /* output:
+        John
+        18
+        undefined
+        */
+    </script>
+</body>
+
+</html>

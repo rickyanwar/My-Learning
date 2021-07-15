@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+<!-- 
+    STRUKUR DATA JAVASCRIPT
+    OBJECT
+    ARRAY
+    MAP
+    SET -->
+
+<script>
+    // ------------ OBJECT --------------//
+    let object = { key1 : 'value1', key2 :'value2'}
+    const user= {
+        firstName : 'Ricky',
+        lastName : 'Anwar',
+        age :22 ,
+        isJedi : true
+    }
+    console.log(`Halo nama saya ${user.firstName} umur saya ${user.age}`)
+   
+    //SELAIN DENGAN DOT OPRATOR AKSES PROPERTY OBJECT JUGA BISA MENGGUNAKAN
+    //BRACKET ATAU TANDA SIKU
+
+    console.log(user['firstName'])
+
+
+    //MENGUBAH PROPERTY OBJECT
+    const spaceShip = {
+        name : "milinium Falcon",
+        manufacturer : "Coreellin Enginering",
+        maxSpeed : 1200,
+        color : 'LightGray'
+    }
+    console.log('Warna sebelum dirubah '+ spaceShip.color)
+    spaceShip.color = "glossy red"
+    console.log("warna setelah dirubah "+ spaceShip.color)
+
+    //KETIKA MENGUBAH OBJECT YANG PEOPERTY KEYNYA SUDAH ADA MAKA
+    //NILAI YANG ADA DIDALAMNYA TERGANTIKAN, SEDANGKAN PROPETY KEY
+    //YANG TIDAK DITEMUKAN MAKA AKAN DITAMBAHKAN KEDALAM OBJECT
+
+    const bio = {
+        firstName : "ricky"
+    }
+    console.log('PERUBAHAN NILAI OBJECT')
+    bio.lastName = "anwar"
+    console.log(bio)
+
+    // ------------ ARRAY --------------//
+    //DEFINISI : ARRAY merupakan tipe data yang mengelompokan lebih dari satu
+    //nilai ke dalam variabel
+    let myArray = ["coklat", 23, true, "programming"]
+    console.log('ARRAY')
+    console.log(myArray);
+
+    //MENGAKSES ARRAY
+
+    arrayFirst = myArray[0];
+    console.log("Array Pertama :" + arrayFirst);
+    //JIKA NILAI OUT OF INDEX ATAU KELUAR DARI JUMLAH ARRAY MAKA AKAN 
+    //BERNILAI undefined
+
+    //MENAMBAHKAN DATA ARRAY
+    console.log('Nilai array awal : ' + myArray)
+    myArray.push('Nilai baru')
+    console.log('Nilai array stelah diPush : ' + myArray)
+
+    //MENGUALRKAN NILAI ARRAY TERKAHIR
+    myArrayPop = myArray.pop();
+    console.log('Nilai Array terkahir (POP) : ' + myArrayPop)
+
+    //METODE LAIN YANG DAPAT DIGUNAKAN UNTUK
+    //MEMANIPULASI ARRAY ADALAH 
+    // #SHIFT => MENGELUARKAN ELEMENT PERTAMA ARRAY
+    // #UNSHIFT => MENAMBAHKAN ELMENT DI AWAL ARRAY
+    
+    // SHIFT
+    myArrayShift = myArray.shift()
+    console.log('Nilai array pertama (SHIFT) ;' + myArrayShift)
+    //NILAI ARRAY AWAL MENJADI KOSONG
+    console.log(myArray)
+
+    // UNSHIFT
+    myArray.unshift('Nilai Unshift')
+    console.log('MENAMBAHKAN NILAI ARRAY PERTAMA DENGAN UNSHIFT : Nilai Unshift')
+    console.log(myArray)
+
+    // DELETE
+    delete myArray[0]
+    console.log('Menghapus nilai array index pertama : Nilai Unshift')
+    console.log(myArray)
+
+    //KEYWORD DELETE HANYA MENGHAPUS DATA PADA INDEX 
+    //YANG DITENTUKAN LALU MEMBIARKAN POSISI TERSEBUT KOSONG
+    //UNTUK MENGHAPUS MENGGUNAKAN 
+    
+    //SPLICE
+    console.log('Menhapus dari index -0 sebanyak 1 elemen')
+    myArray.splice(0, 1);   // Menhapus dari index -0 sebanyak 1 elemen
+    console.log(myArray)
+
+
+    //SPREAD OPRATOR
+    
+    //SPREAD OPRATOR DIGUNAKAN UNTUK MENYEBARKAN NILAI ARRAY
+    //ATAU LEBIH TEPATNYA IERABEL
+    const favorites = ["seafood","salad","nugget","soup"]
+    console.log('penggunaan spread oprator')
+    console.log(...favorites)
+
+    //PENGABUNGAN 2 ARRAY MENGGUNAKN SPREAD OPRATOR
+    const others = ["Cake", "Pie", "Donut"];
+
+    const allFavorites = [...favorites, ...others];
+    console.log('penggabungan array menggunakan spread oprator')
+    console.log(allFavorites);
+
+    //PENGABUNGAN 2 OBJECT MENGGUNAKAN SPREAD OPRATOR
+    console.log('penggunaan spread oprator')
+    const obj1 = { firstName: 'Obi-Wan', age: 30 };
+    const obj2 = { lastName: 'Kenobi', gender: 'M' };
+
+    const newObj = { ...obj1, ...obj2 };
+
+    console.log(newObj);
+
+    
+</script>
+</body>
+</html>

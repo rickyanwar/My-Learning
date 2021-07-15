@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //MAP
+        //MAP ADALAH TIPE DATA YANG MENYIMPAN KOLEKSI DATA
+        //DENGAN FORMAT KEY VALUE LAYAKNYA OBJECT. YANG MEMBEDAKAN ADALAH MAP
+        //MEMPERBOLEHKAN KEY DENGAN TIPE DATA APAPUN DIBANDINGKAN DENGAN OBJECT YANG 
+        //HARUS BERTIPE DATA STRING ATAU SYMBOL
+        const myMap = new Map([
+            ['1','a string key'],
+            [1,'a number key'],
+            [true, true]
+        ])
+
+        console.log(myMap)
+
+        //KETIKA SUDAH MEMBUAT MAP
+        //ARRAY PERTAMA LUAR MEYIMPAN MASING MASING ELEMEN
+        //ATAU PSANGAN KEY-VALUE DARI MAP. KEMUDIAN ARRAY DI DALAMNYA MEMILIKI
+        //DUA ELEMENT, DIMANA ELEMENT PERTAMA ADALAH KEY DAN ARRAY KEDUA ADALAH
+        //VALUE
+
+        //KETIKA SUDAH MEMBUAT OBJECT , KITA BISA MENDAPATKAN NILAI 
+        //BERDASARKAN KEY TERTENTU MENGGUNAKAN GET()
+        //LALU MENAMBAHKAN PASANAGAN KEY-VALUE BARU MENGGUNKAN SET()
+
+        const capital = new Map([
+            ["jakarta", 'indonesia'],
+            ["london","england"],
+            ["japan", "tokyo"]
+        ])
+
+        console.log(capital.size)
+        console.log(capital.get('london'))
+
+        const wrongMap = new Map();
+ 
+        wrongMap["My Key"] = "My Value";
+        console.log(wrongMap["My Key"]);
+
+        //KODE DIATAS TIDAK SESUAI JIKA DIGUNAKAN DALAM MAP
+        //KETIKA KITA MENETAPKAN NILAI MAP SEPERTI DIATAS, DATA AKAN
+        //DISIMPAN SEBAGAI GENERIC OBJECT. INI AKAN MENGAKIBATKAN
+        //DATA TIDAK TERSIMPAN DALAM MAP QUERY DAN TIDAK BISA MENGGUNAKAN FITUR DARI MAP
+        //SEPERTI .has atau .delete
+
+        //PSTIKAN MENGGUNAKAN .set dan .get untuk Map
+    </script>
+</body>
+</html>

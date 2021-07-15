@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        const favorites = ["Seafoods", "Salad", "Nugget", "Sout"]
+        const [firstFoods, secondFoods, thirdFood, fourthFood] = favorites;
+        //BEBAS MENENTUKAN NILAI VARIABEL TAPI HARUS SESUAI
+        //DENGAN URUTAN ARRAY
+        console.log(firstFoods);
+        console.log(secondFoods)
+        console.log(thirdFood)
+        console.log(fourthFood)
+        
+        //SELAIN ITU JUGA KITA BISA MEMILIH NILAI PADA INDEX TERTENTU
+        //UNTUK DESTRUKSIKAN PADA ARRAY
+        const [,,,makananKetiga] = favorites
+        console.log('ini destructing pada makanan ketiga '+ makananKetiga)
+    
+        
+        //DESTRUCTING ASSGIMENT
+        //KITA JUGA BISA MELAKUKAN DESTRUCING ASSIGMENT PADA ARRAY
+        //NAMUN TIDAK SEPERTI OBJECT, KITA PERLU MEMBUNGKUSNYA DENGAN TANDA
+        //KURUNG CONTOH SEPERTI BERIKUT
+
+        let myFood = 'iceCream';
+        let herFood = 'Noodels';
+
+        [myFood, herFood] = favorites;
+
+        console.log('my foods '+ myFood)
+
+        console.log('her foods '+ herFood)
+
+        //DENGAN ARRAY DESTRUCTING KITA BISA MENUKAR NILAI VARIABEL
+        //DENGAN SANGAT MUDAH
+        console.log('================ Coba Swap ================');
+        let a = 1;
+        let b = 2;
+
+        console.log('Sebelum Swab');
+        console.log('Nilai a : ' + a);
+        console.log('Nilai b : ' + b);
+
+        [a , b] = [b, a]
+        console.log('Setelah Swab')
+        console.log('Nilai a : ' + a);
+        console.log('Nilai b : ' + b);
+        
+        //DEFAUTS VALUE
+        //KETIKA DESTRUCING ARRAY , TETAPI NILAI VARIABEL TIDAK DAPAT DI JANGKAU
+        //MAKA NILAI TERSEBUT AKAN BERNILAI UNDIFNED
+    </script>
+</body>
+</html>
