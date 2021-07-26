@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //SET
+        //set adalah kumpulan nilai (set of values). yang membedakan set dengan struktur data
+        //lain adalah pada set tidak berurutan dan juga tidak di indexs
+        //selain itu set juga bersifat UNIK DAN TIDAK ADA DUPLIKASI
+
+        const numberSet = new Set([1,3,4,2,1])
+        console.log(numberSet)
+        
+        //MENAMBAHKAN DATA DALAM VARIABEL SET
+        //dengan memanfaat fungsi add()
+        numberSet.add(5)
+        numberSet.add(9)
+        numberSet.add(8)
+
+        console.log('new data map')
+        console.log(numberSet)
+        //Fungsi add() hanya menerima satu argumen. Jika Anda memasukkan array, maka array tersebut akan dianggap sebagai satu elemen sendiri. 
+        //Nilai yang duplikat akan diabaikan.
+
+        //MENGHAPUS SET
+        console.log('hapus nilai set (8)')
+        numberSet.delete(8);
+        console.log(numberSet);
+        
+        //Ingat bahwa Set tidak memiliki urutan atau index, sehingga argumen yang dimasukkan ke dalam fungsi delete
+        //adalah nilai yang ingin dihapus, bukan index-nya.
+   
+   </script>
+</body>
+</html>
