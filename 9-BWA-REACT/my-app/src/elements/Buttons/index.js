@@ -7,8 +7,8 @@ export default function Button(props){
     if(props.isLarge) className.push("btn-lg")
     if(props.isSmall) className.push("btn-sm")
     if(props.isBlock) className.push("btn-block")
-    if(props.hadShadow) className.push("btn-shadow")
-
+    if(props.hasShadow) className.push("btn-shadow")
+ 
     const onClick = () =>{
         if(props.onClick) props.onClick()
     }
@@ -38,7 +38,7 @@ export default function Button(props){
                 className={className.join("")}
                 style={props.style} 
                 target={props.target === "_blank"  ? "_blank" : undefined } 
-                rel={props.target == "_blank" ? "noopner noreferrer" : undefined }>
+                rel={props.target === "_blank" ? "noopener noreferrer" : undefined }>
                 {props.children}
             </a>
             )
@@ -77,6 +77,7 @@ Button.propTypes = {
     className : propTypes.string,
     isDisabled : propTypes.bool,
     isExternal : propTypes.bool,
+    isPrimary : propTypes.bool,
     isLoading : propTypes.bool,
     isSmall : propTypes.bool,
     isLarge : propTypes.bool,
