@@ -23,9 +23,9 @@ export default function Categories({ data }) {
                                         <div className="card">
                                             {
                                                 item.isPopular && (<div className="tag">
-                                                    Popular
+                                                    Popular {" "}
                                                     <span className="font-weight-light">
-                                                        Choice
+                                                         Choice
                                                     </span>
                                                 </div>
                                                 )}
