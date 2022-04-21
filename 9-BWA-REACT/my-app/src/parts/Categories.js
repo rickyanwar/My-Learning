@@ -28,8 +28,8 @@ export default function Categories({ data }) {
                                                          Choice
                                                     </span>
                                                 </div>
-                                                )}
-
+                                                )
+                                            }
                                             <figure className="img-wrapper" style={{ height: 180 }}>
                                                 <img src={item.imageUrl} alt={item.name} className="img-cover" />
                                             </figure>
