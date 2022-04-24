@@ -32,7 +32,7 @@ export default function Hero(props) {
                         hasShadow
                         isPrimary
                         onClick={showMostPicked}
-                        >
+                    >
                         Show Me Now
                     </Button>
                     <div className="row mt-5">
@@ -40,8 +40,8 @@ export default function Hero(props) {
                             <img width="36" height="36"
                                 src={IconTraveler} alt={`${props.data.traveler} Traveler`} />
                             <h6 className="mt-3">
-                                {  formatNumber(props.data.travelers) }{" "}
-                               
+                                {formatNumber(props.data.travelers)}{" "}
+
                                 <span className="text-gray-500 font-weight-light">
                                     Traveler
                                 </span>
@@ -51,7 +51,7 @@ export default function Hero(props) {
                             <img width="36" height="36"
                                 src={IconCities} alt={`${props.data.cities} Cities`} />
                             <h6 className="mt-3">
-                                { formatNumber(props.data.cities)}{" "}
+                                {formatNumber(props.data.cities)}{" "}
                                 <span className="text-gray-500 font-weight-light">
                                     Cities
                                 </span>
@@ -61,7 +61,7 @@ export default function Hero(props) {
                             <img width="36" height="36"
                                 src={IconTreasure} alt={`${props.data.treasures} Treasure`} />
                             <h6 className="mt-3">
-                                {formatNumber(props.data.treasures)}{" "} 
+                                {formatNumber(props.data.treasures)}{" "}
                                 <span className="text-gray-500 font-weight-light">
                                     Treasure
                                 </span>

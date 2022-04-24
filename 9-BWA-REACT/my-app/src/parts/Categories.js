@@ -1,10 +1,11 @@
 import React from 'react';
 import Button from 'elements/Buttons';
-
+import Fade from 'react-reveal/Fade'
 export default function Categories({ data }) {
 
     return data.map((category, index1) => {
         return (
+            <Fade>
             <section className="container" key={`category-${index1}`}>
                 <h4 className="mb-3 font-weight-medoum">
                     {category.name}
@@ -20,6 +21,7 @@ export default function Categories({ data }) {
                             category.items.map((item, index2) => {
                                 return (
                                     <div className="item column-3 row-1" key={`category-${index1}-item-${index2}`}>
+                                       <Fade bottom delay={300 * index2}>
                                         <div className="card">
                                             {
                                                 item.isPopular && (<div className="tag">
@@ -47,12 +49,14 @@ export default function Categories({ data }) {
                                                 </span>
                                             </div>
                                         </div>
+                                        </Fade>
                                     </div>
                                 )
                             })
                     }
                 </div>
             </section>
+            </Fade>
         )
     })
 
