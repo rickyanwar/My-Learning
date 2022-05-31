@@ -1,13 +1,15 @@
-console.log(clubs   )
+import DataSource from '../data/data-source.js';
+
 var main =  ()=> {
     var searchElement = document.querySelector("#searchElement");
     var buttonSearchElement = document.querySelector("#searchButtonElement");
     var clubListElement = document.querySelector("#clubList");
 
-    var onButtonSearchClicked =  ()=> { 
-        var dataSource = new DataSource(renderResult, fallbackResult);
-        dataSource.searchClub(searchElement.value);
-    };
+    const onButtonSearchClicked = () => {
+        DataSource.searchClub(searchElement.value)
+            .then(renderResult)
+            .catch(fallbackResult)
+};
 
     var renderResult =  (results) => {
         clubListElement.innerHTML = "";
@@ -35,3 +37,5 @@ var main =  ()=> {
 
     buttonSearchElement.addEventListener("click", onButtonSearchClicked);
 };
+
+export default main;

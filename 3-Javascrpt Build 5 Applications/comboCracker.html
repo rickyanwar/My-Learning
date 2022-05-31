@@ -5,32 +5,72 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Combo Cracker</title>
+    <style>
+        .numb{
+            font-size: 20px;
+        }
+    </style>
 </head>
 <body>
+    <div class="message">Gues Combo</div>
     <div class="game"></div>
     <button type="button">Start</button>
 
     <script>
         const gameArea = document.querySelector(".game");
         const button = document.querySelector("button");
+        const message = document.querySelector('.message')
         let gamePlay = false;
         button.addEventListener("click", function () {
             if (!gamePlay) {
+                score = 0;
                 gamePlay = true;
                 button.innerHTML= "check Combo";
                 maker();
             } else {
-                console.log("Checker");
+                console.log('cheker')
+                const numbers = document.querySelectorAll(".numb");
+                console.log(numbers.values)
+                let winCondition;
+                for (let i = 0; i < numbers.length; i++) {
+                   console.log(numbers[i].value)
+                    if(numbers[i].value == numbers[i].correct){
+                        numbers[i].style.backgroundColor = "green"
+                        numbers[i].style.color = "white"
+                        console.log('match')
+                        winCondition++
+                    }else{
+                        score++;
+                        message.innerHTML = "Guesses "+ score
+                       let color = (numbers[i].value < numbers[i].correct) ? "blue" : "red";
+                        numbers[i].style.backgroundColor = color;
+                        numbers[i].style.color = "black"
+                        console.log('Not match')
+                    }
+                    if(winCondition == numbers.length){
+                        console.log('Gamer Overs')
+                    }
+                }
             }
           })    
 
         function maker(){
-            let el = document.createElement("input");
-            console.log(el);
-            el.setAttribute("type","number");
-            el.max = 9;
-            el.min = 0;
-            gameArea.appendChild(el);
+            for (let x = 0; x < 4; x++) {
+                let el = document.createElement("input");
+                console.log(el);
+                el.setAttribute("type","number");
+                el.max = 9;
+                el.min = 0;
+                el.size = 1;
+                el.style.width = "50px";
+                el.classList.add("numb");
+                el.value = 0;
+                el.order = x;
+                el.correct = Math.floor(Math.random()*10)
+                el.value = el.correct;
+                gameArea.appendChild(el);
+            }
+            
         }
     </script>
 </body>

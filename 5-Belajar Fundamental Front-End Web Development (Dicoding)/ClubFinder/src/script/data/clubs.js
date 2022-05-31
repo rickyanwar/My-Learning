@@ -43,3 +43,5 @@ var clubs = [
 
     }
 ];
+
+export default clubs;

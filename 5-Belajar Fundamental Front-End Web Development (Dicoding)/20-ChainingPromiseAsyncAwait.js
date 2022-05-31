@@ -35,18 +35,18 @@ const servingToTable = coffe =>{
     })
 }
 
-//CHAINING PROMISE 
+//CHAINING PROMISE USING ASYNC AWAIT
 
 async function reserveACoffe(type, miligrams){
     try {
-        const seeds = await getSeeds(seeds);
-        const coffe = await getCofee(coffe);
-        const result = await servingToTable(result)
+        const seeds = await getSeeds(type, miligrams);
+        const coffe = await makeCofee(seeds);
+        const result = await servingToTable(coffe)
         console.log(result)
     } catch (error) {
-        console.log(result)
+        console.log(error)
     }
 }
 
 
-reserveACoffe("liberica", 200)
+reserveACoffe("liberica", 10)

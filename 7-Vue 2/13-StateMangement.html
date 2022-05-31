@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <hello></hello>
+        kn                                                                                            hoooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooollllllllllllllllllllllllllllllllllllllllllllllllllh<div>
+            {{ counter }}
+            <button @click="increment()"> + </button>
+        </div>
+        <ul v-for="book in books">
+            <li>{{ book.title }}</li>
+        </ul>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+    <script src="https://unpkg.com/vuex@3.0.1/dist/vuex.js"></script>
+    <script type="module">
+        import { Hello } from './component/Hello.js'
+        const store = new Vuex.Store({
+          
+            state: {
+                counter: 0,
+                books: [],
+            },
+            //MUTATION TIDAK MENERIMA DENGAN MODE ASYNCRONUS
+            mutations: {
+                increment: state => state.counter++,
+                setBooks(state, books){
+                    state.books = books
+                }
+            },
+            actions :{
+                increment : (context)=>{
+                    context.commit('increment')
+                },
+                //CONTOH AKSES GETBOOKS MENGGUNAKAN ASYNC
+                // https://api.jsonbin.io/b/5fdef66747ed0861b369ba99
+                getBooks({commit}){
+                    return new Promise((resolve, reject) => {
+                        var xhr = new XMLHttpRequest();
+                        let token = '$2b$10$j7skJGfk2THRqALHkUn25.piCBkZb1Tmwiq8kKPYG8B8U.BtZOXmm'
+
+                        xhr.open('GET','https://api.jsonbin.io/b/5fdef66747ed0861b369ba99');
+                       
+                        xhr.onload = function(){
+                            if (this.status >= 200 && this.status <300) {
+                                commit('setBooks', JSON.parse(xhr.response))
+                                resolve(xhr.responseText)
+                            }else{
+                                reject({
+                                    status : this.status,
+                                    statusText : xhr.statusText
+                                })
+                            }
+                        }
+                        xhr.onerror = function () {
+                            reject({
+                                status: this.status,
+                                statusText: xhr.statusText
+                            });
+                        };
+                        xhr.setRequestHeader("secret-key",token);
+                        xhr.send();
+                    })
+                }
+            },
+            // pemanggilan state tidak langsung menembak
+            // state-nya (store.state.counter) melainkan 
+            // melalui perantaraan fungsi getter di store tersebut.
+            getters :{
+                counter : state => state.counter,
+                //AMBIL NILAI DARI books
+                books: state => state.books
+            }
+            //PERBEDAAN ACTION DENGAN MUATAION
+            //-Actions bertugas meng-commit mutations.
+            //-Actions mendukung operasi asynchronous.
+        })
+
+       var vm = new Vue({
+            el: '#app',
+            store,
+            /* Vuex menyediakan mekanisme untuk menginjek atau meregister Vuex 
+            store pada objek Vue sehingga bisa digunakan pada seluruh
+            component dibawah objek Vue tersebut */
+            // Store,
+
+            // local state as computed
+            computed: {
+                books(){
+                    return store.getters.books
+                },
+                counter() {
+                    // return store.state.counter
+                    return store.getters.counter
+                },
+             
+            },
+
+            components:{
+                'hello': Hello
+            },
+            created() {
+                //PANGIL ACTION PADA VUEX
+                store.dispatch('getBooks')
+                    .then((response) => {
+                      console.log('result: ', response)
+                    })
+                    .catch((error) => {
+                      console.log('error: ', error)
+                    })
+            },
+         
+            // view
+            // template: `
+            // <div>
+            // {{ counter }}
+            // <button @click="increment()"> + </button>
+            // </div>
+            // `,
+            // actions
+            methods: {
+                //UNTUK MENGAKSES VUEX / STATE
+                increment() {
+                    // store.commit('increment')
+                    // store.state.counter++
+                    this.$store.commit('increment')
+                },
+            },
+        })
+    </script>
+</body>
+
+</html>
