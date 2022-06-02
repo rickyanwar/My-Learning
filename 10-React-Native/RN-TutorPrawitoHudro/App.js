@@ -5,23 +5,20 @@ import FlexBox from './FlexBox';
 import PositionReacNative from './PositionReacNative';
 import PropsDinamis from './src/pages/propsDinamis';
 import StateDinamis from './src/pages/StateDinamis/index';
+import Communication from './src/pages/Communication';
+import Cart from './src/components/Cart';
+import Product from './src/components/Product';
 const App = () => {
   return (
     <View >
-      {/* <View
-        style={{
-          width: 80, height: 80, backgroundColor: '#0abde3'
-        }}>
-
-      </View>
-      <Text>
-        Ricky
-      </Text>
-      <Photo></Photo>
+      {/* <Cart /> */}
+      {/* <Photo />
       <FlexBox />
-      <PositionReacNative />
-      <PropsDinamis /> */}
-      <StateDinamis />
+      <PropsDinamis />
+      <StateDinamis /> */}
+      {/* <PositionReacNative /> */}
+      {/* <Product /> */}
+      <Communication />
     </View>
   )
 }
