@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, TouchableOpacity, Image } from 'react-native';
 import { COLORS, FONTS } from '../constants';
-const TextIconButton = ({ containerStyle, label, labelStyle, icon, iconStyle, onPress }) => {
+const TextIconButton = ({ containerStyle, label, labelStyle, icon, iconStyle, onPress, iconPosition }) => {
     return (
         <TouchableOpacity
             style={{
@@ -12,17 +12,54 @@ const TextIconButton = ({ containerStyle, label, labelStyle, icon, iconStyle, on
             }}
             onPress={onPress}
         >
+            {
+
+                iconPosition == 'LEFT' &&
+                <Image
+                    source={icon}
+                    style={{
+                        marginLeft: 5,
+                        width: 20,
+                        height: 20,
+                        tintColor: COLORS.black,
+                        ...iconStyle
+                    }}
+                />
+
+            }
             <Text style={{ ...labelStyle, ...FONTS.body3 }}>{label}</Text>
-            <Image
-                source={icon}
-                style={{
-                    marginLeft: 5,
-                    width: 20,
-                    height: 20,
-                    tintColor: COLORS.black,
-                    ...iconStyle
-                }}
-            />
+            {
+
+                iconPosition == 'RIGHT' &&
+                <Image
+                    source={icon}
+                    style={{
+                        marginLeft: 5,
+                        width: 20,
+                        height: 20,
+                        tintColor: COLORS.black,
+                        ...iconStyle
+                    }}
+                />
+
+            }
+
+            {
+
+                iconPosition == '' &&
+                <Image
+                    source={icon}
+                    style={{
+                        marginLeft: 5,
+                        width: 20,
+                        height: 20,
+                        tintColor: COLORS.black,
+                        ...iconStyle
+                    }}
+                />
+
+            }
+
         </TouchableOpacity>
     );
 }

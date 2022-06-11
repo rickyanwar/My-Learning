@@ -5,7 +5,8 @@ import IconButton from "./IconButton";
 import TwoPointSlider from "./TwoPointSlider";
 import TextButton from "./TextButton";
 import TextIconButton from "./TextIconButton";
-
+import FormInput from "./FormInput";
+import CustomSwitch from "./CustomSwitch";
 export {
     Header,
     HorizontalFoodCard,
@@ -13,5 +14,7 @@ export {
     IconButton,
     TwoPointSlider,
     TextButton,
-    TextIconButton
+    TextIconButton,
+    FormInput,
+    CustomSwitch
 }

@@ -1,5 +1,14 @@
 import { Dimensions } from "react-native";
 const { width, height } = Dimensions.get("window");
+import { useFonts } from 'expo-font';
+
+// useFonts({
+//     'Poppins-Black': require('../assets/fonts/Poppins-Black.ttf'),
+//     'Poppins-Bold': require('../assets/fonts/Poppins-Bold.ttf'),
+//     'Poppins-SemiBold': require('../assets/fonts/Poppins-SemiBold.ttf'),
+//     'Poppins-Regular': require('../assets/fonts/Poppins-Regular.ttf'),
+
+// });
 
 export const COLORS = {
     primary: "#FF6C44", //orange
@@ -53,6 +62,7 @@ export const SIZES = {
     height
 };
 export const FONTS = {
+
     largeTitle: { fontFamily: "Poppins-Black", fontSize: SIZES.largeTitle },
     h1: { fontFamily: "Poppins-Bold", fontSize: SIZES.h1, lineHeight: 36 },
     h2: { fontFamily: "Poppins-Bold", fontSize: SIZES.h2, lineHeight: 30 },
