@@ -126,6 +126,7 @@ const SignIn = ({ navigation }) => {
                         borderRadius: SIZES.radius,
                         backgroundColor: isEnableSignIn() ? COLORS.primary : COLORS.transparentPrimray
                     }}
+                    onPress={() => navigation.navigate("Home")}
                 />
                 {/* SignUp */}
                 <View style={{

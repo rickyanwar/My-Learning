@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 
 import { HorizontalFoodCard, VerticalFoodCard } from "../../components"
-
+import { useNavigation } from '@react-navigation/native';
 import { COLORS, SIZES, icons, FONTS, dummyData } from '../../constants';
 import FilterModal from './FilterModal';
 const Section = ({ title, onPress, children }) => {
@@ -40,6 +40,7 @@ const Section = ({ title, onPress, children }) => {
 }
 
 const Home = () => {
+    const navigation = useNavigation();
     const [selectedCategoryId, setSelectedCategoryId] = React.useState(1);
     const [selectedMenuType, setSelectedMenuType] = React.useState(1);
     const [popular, setPopular] = React.useState([]);
@@ -356,14 +357,17 @@ const Home = () => {
                                     width: 110
                                 }}
                                 item={item}
-                                onPress={() => console.log("HorizontalFoodCard")}
+                                onPress={() =>
+                                    navigation.navigate('FoodDetail')}
                             />
                         )
                     }
                 }
-                ListFooterComponent={
-                    <View style={{ height: 200 }} />
-                }
+
+            //for section not hide navigation
+            // ListFooterComponent={
+            //     <View style={{ height: 200 }} />
+            // }
             />
 
         </View>

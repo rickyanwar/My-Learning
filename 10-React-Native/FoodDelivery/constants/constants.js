@@ -30,7 +30,7 @@ const screens = {
     notification: "Notification",
     my_wallet: "My Wallet"
 }
-
+const GOOGLE_MAP_API_KEY = "AIzaSyACf0VS2b6wGFGwd-3NzDJa5nu1wPOEG-M"
 const bottom_tabs = [
     {
         id: 0,
@@ -133,5 +133,6 @@ export default {
     delivery_time,
     ratings,
     tags,
-    onboarding_screens
+    onboarding_screens,
+    GOOGLE_MAP_API_KEY
 }

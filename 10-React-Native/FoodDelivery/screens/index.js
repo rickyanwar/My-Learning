@@ -13,20 +13,23 @@ import TwoPointSlider from "../components/TwoPointSlider";
 import Search from "./Search/Search";
 
 // Cart
-import CartTab from "./Cart/CartTab"
-
+import MyCart from "./Cart/MyCart"
 // Favourite
 import Favourite from "./Favourite/Favourite";
 
 // Notification
 import Notification from "./Notification/Notification"
 
+//Food Detail
+import FoodDetail from "./Food/FoodDetail"
+
+//Delivery
+import Map from "./Delivery/Map";
 export {
     MainLayout,
     Home,
     FilterModal,
     Search,
-    CartTab,
     Favourite,
     Notification,
     OnBoarding,
@@ -34,5 +37,9 @@ export {
     SignUp,
     Otp,
     ForgotPassword,
-    AuthLayout
+    AuthLayout,
+    FoodDetail,
+    MyCart,
+    Map
+
 }

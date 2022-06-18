@@ -14,7 +14,7 @@ import { Header } from '../components';
 import {
     Home,
     Search,
-    CartTab,
+    MyCart,
     Favourite,
     Notification
 } from "../screens"
@@ -298,14 +298,14 @@ const MainLayout = ({ drawerAnimationStyle, navigation, selectedTab, setSelected
                         return (
                             <View
                                 style={{
-                                    // height: SIZES.height - 160,
-                                    height: SIZES.height,
+                                    height: SIZES.height - 160,
+                                    // height: SIZES.height,
                                     width: SIZES.width,
                                 }}
                             >
                                 {item.label == constants.screens.home && <Home />}
                                 {item.label == constants.screens.search && <Search />}
-                                {item.label == constants.screens.cart && <CartTab />}
+                                {item.label == constants.screens.cart && <MyCart />}
                                 {item.label == constants.screens.favourite && <Favourite />}
                                 {item.label == constants.screens.notification && <Notification />}
 

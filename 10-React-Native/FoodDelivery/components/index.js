@@ -7,6 +7,14 @@ import TextButton from "./TextButton";
 import TextIconButton from "./TextIconButton";
 import FormInput from "./FormInput";
 import CustomSwitch from "./CustomSwitch";
+import CartQuantityButton from "./CartQuantityButton";
+import IconLabel from "./IconLabel";
+import LineDivider from "./LineDivider";
+import Ratings from "./Ratings";
+import StepperInput from "./StepperInput"
+import FooterTotal from "./FooterTotal";
+import GraphHopperMapViewDirections from "./GraphHopperMapViewDirections"
+import MapViewDirections from "./MapDirection";
 export {
     Header,
     HorizontalFoodCard,
@@ -16,5 +24,14 @@ export {
     TextButton,
     TextIconButton,
     FormInput,
-    CustomSwitch
+    CustomSwitch,
+    CartQuantityButton,
+    IconLabel,
+    LineDivider,
+    Ratings,
+    StepperInput,
+    FooterTotal,
+    GraphHopperMapViewDirections,
+    MapViewDirections
+
 }

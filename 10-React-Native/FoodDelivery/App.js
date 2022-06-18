@@ -2,7 +2,7 @@ import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import CustomDrawer from "./navigation/CustomDrawer";
-import { OnBoarding, SignIn, ForgotPassword, SignUp, Otp } from './screens';
+import { OnBoarding, SignIn, ForgotPassword, SignUp, Otp, MainLayout, FoodDetail, MyCart, Map } from './screens';
 import { createStore, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
@@ -10,6 +10,7 @@ import AppLoading from 'expo-app-loading';
 
 import rootReducer from './stores/rootReducer';
 import { useFonts } from 'expo-font';
+
 
 let customFonts = {
   'Poppins-Black': require('./assets/fonts/Poppins-Black.ttf'),
@@ -38,7 +39,7 @@ const App = () => {
           screenOptions={{
             headerShown: false,
           }}
-          initialRouteName={'OnBoarding'}
+          initialRouteName={'Map'}
         >
           <Stack.Screen
             name="OnBoarding"
@@ -61,21 +62,28 @@ const App = () => {
             name="Otp"
             component={Otp}
           />
-          {/* <Stack.Screen
+          <Stack.Screen
             name="Home"
             component={CustomDrawer}
-
-          /> */}
-          {/* <Stack.Screen
-            name="Home"
-            component={CustomDrawer}
-
           />
           <Stack.Screen
-            name="sss"
+            name="MyCart"
+            component={MyCart}
+          />
+          <Stack.Screen
+            name="FoodDetail"
+            component={FoodDetail}
+          />
+          <Stack.Screen
+            name="Map"
+            component={Map}
+          />
+          {/* <Stack.Screen
+            name="Home"
             component={CustomDrawer}
 
           /> */}
+
         </Stack.Navigator>
       </NavigationContainer>
     </Provider>
