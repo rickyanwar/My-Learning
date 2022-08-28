@@ -4,12 +4,13 @@ import "./index.scss"
 
 export default function Number(props) {
 
-    const { value, placeholder, name, min, max, prefix, suffix } = props;
+    const { value, placeholder, name, min, max, prefix, suffix, isSuffixPlural } = props;
 
     const [InputValue, setInputValue] = useState(`${prefix}${value}${suffix}`);
 
     const onChange = e => {
         let value = String(e.target.value);
+        console.log(value);
         if (prefix) value = value.replace(prefix);
         if (suffix) value = value.replace(suffix);
 
@@ -23,11 +24,12 @@ export default function Number(props) {
                     value: +value
                 }
             });
-            setInputValue(`${prefix}${value}${suffix}`);
+            setInputValue(`${prefix}${value}${suffix}${isSuffixPlural && value > 1 ? "s" : ""}`);
         }
     }
 
     const minus = () => {
+
         value > min &&
             onChange({
                 target: {
@@ -39,6 +41,7 @@ export default function Number(props) {
 
 
     const plus = () => {
+        console.log('plus')
         value < max &&
             onChange({
                 target: {
@@ -67,7 +70,7 @@ export default function Number(props) {
                     />
                 </div>
                 <div className="input-group-apppend">
-                    <span className="input-group-text plus" onChange={plus}>
+                    <span className="input-group-text plus" onClick={plus}>
                         +
                     </span>
                 </div>
@@ -88,5 +91,6 @@ Number.propTypes = {
     value: propTypes.oneOfType([propTypes.string, propTypes.number]),
     onChange: propTypes.func,
     placeholder: propTypes.string,
-    outerClassName: propTypes.string
+    outerClassName: propTypes.string,
+    isSuffixPlural: propTypes.bool,
 }
